@@ -5,11 +5,30 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+/*Bouton Se connecter */
+.btn-login {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    background-color: rgba(220, 53, 69, 0.9);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+    background-color: darkred;
+}
 
 /* HERO SECTION */
 .hero {
     position: relative;
-    height: 100vh;
+    width: 100%;
+    min-height: 60vh; 
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -20,17 +39,19 @@
 .carousel {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: auto; 
     overflow: hidden;
-    max-width: 100%;
+   
 }
 
 .banner-img {
     width: 100%;
     height: auto;
+    max-height: 90vh;
     object-fit: cover;
     object-position: center;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    display: block;
 }
 
 /* Overlay pour le texte et le bouton */
@@ -78,7 +99,7 @@
     display: inline-block;
     padding: 12px 25px;
     color: white;
-    background: red;
+    background: rgb(220, 53, 69);
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
@@ -102,7 +123,22 @@
 .rotate {
     transform: rotate(90deg);
 }
+@media (max-width: 600px) {
+    .btn-login {
+        top: 10px;
+        left: 10px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
 
+    .overlay h1 {
+        font-size: 1.8rem;
+    }
+
+    .overlay p {
+        font-size: 1rem;
+    }
+}
 /* ARROWS */
 .arrow {
     position: absolute;
@@ -123,26 +159,44 @@
 /* DOTS */
 .dots {
     position: absolute;
-    bottom: 10px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    z-index: 1000;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: white;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s;
+    border: 2px solid #fff;
+    transition: transform 0.3s ease, background 0.3s ease;
+    
+}
+.dot:hover {
+    transform: scale(1.2);
+    background: #dc3545;
 }
 
 .dot_selected {
-    background: red;
+    background: rgb(220, 53, 69);
 }
+@media (max-width: 600px) {
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-width: 1px;
+    }
 
+    .dots {
+        bottom: 15px;
+        gap: 8px;
+    }
+}
 
 
 /* FEATURES */
@@ -160,7 +214,7 @@
 
 .feature i {
     font-size: 2rem;
-    color: red;
+    color: rgb(220, 53, 69);
     margin-bottom: 10px;
 }
 
@@ -209,7 +263,7 @@
 
 .price {
     font-size: 2.5rem;
-    color: red;
+    color: rgb(220, 53, 69);
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -352,6 +406,27 @@
         width: 60px;
     }
 }
+@media (max-width: 768px) {
+    .hero {
+        min-height: 50vh;
+    }
+
+    .overlay h1 {
+        font-size: 2rem;
+    }
+
+    .overlay p {
+        font-size: 1rem;
+    }
+
+    .banner-img {
+        max-height: 60vh; 
+    }
+
+    .arrow {
+        width: 24px;
+    }
+}
 
 
 /* RESPONSIVE DESIGN */
@@ -381,4 +456,192 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ✅Le Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ✅ Style du contenu du modal */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* ✅ Animation d'ouverture */
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ✅ Bouton de fermeture */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(220, 53, 69);
+    font-weight: bold;
+}
+
+/* ✅ Effet lors du clic en dehors du modal */
+.modal.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ✅ Animation Input */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ✅ Bouton d'inscription stylé */
+.btn-primary {
+    background: rgb(220, 53, 69);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: darkred;
+}
+
+/* ✅ Style des labels (Nom, Prénom, etc.) */
+.modal-content label {
+    display: block; 
+    font-weight: bold; 
+    font-size: 1.1rem; 
+    color: #333; 
+    margin-top: 10px; 
+    text-align: left; 
+}
+
+/* ✅ Amélioration des champs de saisie */
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-top: 5px; 
+    transition: border 0.3s ease-in-out;
+}
+
+/* ✅ Effet interactif lors du focus */
+.modal-content input:focus {
+    border-color: rgb(220, 53, 69);
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(220, 53, 69, 0.5);
+}
+/*LOGIN */
+.login-container {
+    margin: 100px auto;
+    max-width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: rgb(220, 53, 69);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: darkred;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/*DASHBOARD */
+.dashboard-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dashboard-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.dashboard-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* 🔴 Bouton de déconnexion */
+.btn-logout {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-logout:hover {
+    background: darkred;
 }

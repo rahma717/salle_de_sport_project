@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitnessPro Elite</title>
+
+    <!-- Liens CSS et JS -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/df329a5db9.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
 <body>
 
+    <!-- ======================= HEADER ======================= -->
     <header class="hero">
+        <a href="login.php" class="btn btn-login">Se connecter</a>
+
         <div class="carousel">
             <img class="banner-img" src="assets/images/slide1.jpg" alt="Salle de sport">
         </div>
 
-        <!-- Overlay avec le texte et le bouton -->
         <div class="overlay">
             <i class="fa-solid fa-dumbbell"></i>
             <h1>FitnessPro Elite</h1>
@@ -26,13 +31,13 @@
             <a href="#" class="btn">Découvrir nos offres</a>
         </div>
 
-        <!-- Flèches et dots -->
+        <!-- Navigation du carrousel -->
         <img class="arrow arrow_left" src="assets/arrow_left.png" alt="Flèche gauche">
         <img class="arrow arrow_right" src="assets/arrow_right.png" alt="Flèche droite">
         <div class="dots"></div>
     </header>
 
-
+    <!-- ======================= AVANTAGES ======================= -->
     <section class="features">
         <div class="feature">
             <i class="fas fa-map-marker-alt"></i>
@@ -51,9 +56,11 @@
         </div>
     </section>
 
+    <!-- ======================= FORMULES ======================= -->
     <section class="plans">
         <h2>Nos Formules</h2>
         <div class="plan-container">
+            <!-- Plan Basic -->
             <div class="plan basic">
                 <h3>Basic</h3>
                 <p class="price">29.99€ <span>/mois</span></p>
@@ -61,14 +68,12 @@
                     <li><i class="fa-solid fa-check"></i> Accès basique à la salle</li>
                     <li><i class="fa-solid fa-check"></i> Horaires standards</li>
                     <li><i class="fa-solid fa-check"></i> Casier standard</li>
-                    <li><i class="fa-solid fa-check"></i> Programme d'entraînement de base</li>
+                    <li><i class="fa-solid fa-check"></i> Programme de base</li>
                 </ul>
-                <a href="#" class="btn choose-plan">
-                    Choisir cette formule
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
+                <a href="#" class="btn choose-plan">Choisir cette formule <i class="fa-solid fa-chevron-right"></i></a>
             </div>
 
+            <!-- Plan Premium -->
             <div class="plan premium">
                 <h3>Premium</h3>
                 <p class="price">49.99€ <span>/mois</span></p>
@@ -76,38 +81,64 @@
                     <li><i class="fa-solid fa-check"></i> Accès illimité 24/7</li>
                     <li><i class="fa-solid fa-check"></i> Tous les cours collectifs</li>
                     <li><i class="fa-solid fa-check"></i> Casier premium</li>
-                    <li><i class="fa-solid fa-check"></i> Coach personnel (2 séances/mois)</li>
-                    <li><i class="fa-solid fa-check"></i> Accès à l’espace bien-être</li>
+                    <li><i class="fa-solid fa-check"></i> Coach perso (2 séances/mois)</li>
+                    <li><i class="fa-solid fa-check"></i> Espace bien-être</li>
                 </ul>
-                <a href="#" class="btn choose-plan">
-                    Choisir cette formule
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
-
+                <a href="#" class="btn choose-plan">Choisir cette formule <i class="fa-solid fa-chevron-right"></i></a>
             </div>
 
+            <!-- Plan Elite -->
             <div class="plan elite">
                 <h3>Elite</h3>
                 <p class="price">79.99€ <span>/mois</span></p>
                 <ul>
-                    <li><i class="fa-solid fa-check"></i> Tout inclus Premium</li>
-                    <li><i class="fa-solid fa-check"></i> Coach personnel illimité</li>
+                    <li><i class="fa-solid fa-check"></i> Tout Premium</li>
+                    <li><i class="fa-solid fa-check"></i> Coach illimité</li>
                     <li><i class="fa-solid fa-check"></i> Suivi nutritionnel</li>
                     <li><i class="fa-solid fa-check"></i> Massage mensuel</li>
-                    <li><i class="fa-solid fa-check"></i> Accès VIP aux événements</li>
+                    <li><i class="fa-solid fa-check"></i> Événements VIP</li>
                 </ul>
-                <a href="#" class="btn choose-plan">
-                    Choisir cette formule
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
+                <a href="#" class="btn choose-plan">Choisir cette formule <i class="fa-solid fa-chevron-right"></i></a>
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
+    <!-- ======================= MODAL INSCRIPTION ======================= -->
+    <div id="registrationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Inscription</h2>
+            <form id="registrationForm" action="signup.php" method="POST">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" required>
+
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" required>
+
+                <label for="anniversaire">Date de naissance</label>
+                <input type="date" name="anniversaire" required>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" required>
+
+                <label for="telephone">Téléphone</label>
+                <input type="tel" name="telephone" pattern="[0-9]{10}" required>
+
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" minlength="8" required>
+
+                <label for="confirmPassword">Confirmer mot de passe</label>
+                <input type="password" name="confirmPassword" required>
+
+                <button type="submit" class="btn-primary">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======================= FOOTER ======================= -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
-                <!-- Partie gauche -->
                 <div class="footer-left-content">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
                         <rect fill="#CE1126" width="3" height="2" />
@@ -117,23 +148,17 @@
                     <p>FitnessPro Elite</p>
                     <i class="fas fa-chevron-up footer-icon"></i>
                 </div>
-                <div class="footer-divider-vertical"></div>
             </div>
-
-            <!-- Partie droite avec les réseaux sociaux -->
             <div class="footer-right">
                 <a href="#" class="footer-link"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-
-        <!-- Copyright -->
         <div class="footer-bottom">
             <p>&copy; 2025 FitnessPro Elite. Tous droits réservés.</p>
         </div>
     </footer>
-
 
 </body>
 

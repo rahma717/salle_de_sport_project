@@ -78,12 +78,78 @@ document.querySelector(".carousel").addEventListener("mouseleave", () => {
         updateDots();
     }, 3000);
 });
-//
-document.querySelectorAll(".choose-plan").forEach(button => {
-    button.addEventListener("click", function (event) {
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("registrationModal");
+    const closeModal = document.querySelector(".modal-close");
+    const choosePlanBtns = document.querySelectorAll(".choose-plan");
+    const form = document.getElementById('registrationForm');
+
+    choosePlanBtns.forEach(button => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            const icon = button.querySelector("i");
+            icon.classList.toggle("rotate");
+            modal.style.display = "flex";
+            modal.classList.add("show");
+        });
+    });
+
+    closeModal.addEventListener("click", () => closeModalFunction());
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) closeModalFunction();
+    });
+
+    function closeModalFunction() {
+        modal.classList.remove("show");
+        setTimeout(() => modal.style.display = "none", 300);
+    }
+
+    form.addEventListener('submit', (event) => {
         event.preventDefault();
-        const icon = this.querySelector("i");
-        icon.classList.toggle("rotate");
+
+        const formData = new FormData(form);
+
+        fetch('signup.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message);
+            if (data.success) closeModalFunction();
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert("Erreur lors de l'inscription.");
+        });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+    
+    
+
+
+
+
 
